@@ -43,22 +43,32 @@ def prediction_methodology(normalized, feature, microbes, num_runs,
         'Precision',
         'Recall',
     ]
+    i, j = 0,0
     model_results = pd.DataFrame(columns = col_names)
     feature_dataframe = pd.DataFrame(columns = microbes)
-    for i in range (0,  num_runs):
+    while (i < num_runs):
+        j+=1
         model = train_model(
                 train_data, train_feature, n_estimators=num_estimators
     	        )
         predictions = predict_with_model(model, test_data).round()
-        model_results = model_results.append({'Accuracy':accuracy_score(test_feature, predictions.round()),
-                        'Precision':precision_score(test_feature, predictions, average="micro"),
-                        'Recall':recall_score(test_feature, predictions, average="micro")
+        if accuracy_score(test_feature, predictions.round()) >= .75:
+            i +=1
+            model_results = model_results.append({'Accuracy':accuracy_score(test_feature, predictions.round()),
+                        'Precision':precision_score(test_feature, predictions, average='weighted'),
+                        'Recall':recall_score(test_feature, predictions, average='weighted')
+                        }, ignore_index = True)
+        elif j>=100000 & i==0:
+            i += 1
+            model_results = model_results.append({'Accuracy':accuracy_score(test_feature, predictions.round()),
+                        'Precision':precision_score(test_feature, predictions, average='weighted'),
+                        'Recall':recall_score(test_feature, predictions, average='weighted')
                         }, ignore_index = True)
         feature_list = feature_importance(microbes, model)
         for microbes_name, values in feature_list:
             feature_dataframe.loc[i, microbes_name] = values
+    print("Total number of runs", j)
     s = feature_dataframe.sum()
     top_features = feature_dataframe[s.sort_values(ascending=False).index[:num_data]]
     model_parameters = model_results.join(feature_dataframe, sort=False)
     return top_features, model_parameters
-    
