@@ -26,7 +26,7 @@ def main():
               help='The relative size of the test data')
 @click.option('--num-estimators', default=20,
               help='Number of trees in our random forest')
-@click.option('--num-runs', default=500, help='Number of random forest runs')
+@click.option('--num-runs', default=1000, help='Number of random forest runs')
 @click.option('--num-data', default=50,
               help='Number of top data variables to be predicted')
 @click.option('--normalize-method', default='standard_scalar',
