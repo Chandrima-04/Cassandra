@@ -58,7 +58,7 @@ def prediction_methodology(normalized, feature, microbes, num_runs,
                         'Precision':precision_score(test_feature, predictions, average='weighted'),
                         'Recall':recall_score(test_feature, predictions, average='weighted')
                         }, ignore_index = True)
-        elif j>=100000:
+        elif j>=10000:
             i += 1
             model_results = model_results.append({'Accuracy':accuracy_score(test_feature, predictions.round()),
                         'Precision':precision_score(test_feature, predictions, average='weighted'),
