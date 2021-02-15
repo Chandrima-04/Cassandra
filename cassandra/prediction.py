@@ -43,22 +43,24 @@ def prediction_methodology(normalized, feature, microbes, num_runs,
         'Precision',
         'Recall',
     ]
-    i, j = 0,0
+    i,j = 0,0
     model_results = pd.DataFrame(columns = col_names)
     feature_dataframe = pd.DataFrame(columns = microbes)
+    flag = 0
     while (i < num_runs):
         j+=1
         model = train_model(
                 train_data, train_feature, n_estimators=num_estimators
     	        )
         predictions = predict_with_model(model, test_data).round()
-        if accuracy_score(test_feature, predictions.round()) >= .75:
-            i +=1
+        if accuracy_score(test_feature, predictions.round())>=0.75 :
+            i += 1
+            flag = 1
             model_results = model_results.append({'Accuracy':accuracy_score(test_feature, predictions.round()),
                         'Precision':precision_score(test_feature, predictions, average='weighted'),
                         'Recall':recall_score(test_feature, predictions, average='weighted')
                         }, ignore_index = True)
-        elif j>=10000:
+        elif j>=15000 and flag==0:
             i += 1
             model_results = model_results.append({'Accuracy':accuracy_score(test_feature, predictions.round()),
                         'Precision':precision_score(test_feature, predictions, average='weighted'),
