@@ -26,7 +26,7 @@ def main():
               help='The relative size of the test data')
 @click.option('--num-estimators', default=20,
               help='Number of trees in our random forest')
-@click.option('--num-runs', default=500, help='Number of random forest runs')
+@click.option('--num-runs', default=100, help='Number of random forest runs')
 @click.option('--num-data', default=50,
               help='Number of top data variables to be predicted')
 @click.option('--normalize-method', default='standard_scalar',
@@ -41,12 +41,13 @@ def predict_top_features(feature_name, test_size, num_estimators, num_runs,
                          data_file, metadata_file, out_dir):
     """Train a random-forest model to predict the top data variables."""
     raw_data, microbes = parse_raw_data(data_file)
-    seed = randint(0, 1000)
+    seed = randint(0, 500)
     feature, name_map = parse_feature(metadata_file, raw_data.index, feature_name=feature_name)
     new_index = feature!= -1
     raw_data = raw_data[new_index == True]
     feature = feature[new_index == True]
     normalized = normalize_data(raw_data, method=normalize_method, threshold=normalize_threshold)
+    print ("Shape of dataset after normalization", normalized.shape)
     top_features, model_parameters = prediction_methodology(normalized, feature,
                                      microbes, num_runs=num_runs, num_data=num_data,
                                      test_size=test_size, num_estimators=num_estimators, seed=seed)
