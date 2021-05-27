@@ -12,7 +12,7 @@ Following preprocessing can be done:
 From source
 ```
 git clone git@github.com:Chandrima-04/Cassandra.git
-cd MetaSUB
+cd Cassandra
 python setup.py install
 ```
 
