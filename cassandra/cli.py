@@ -22,6 +22,8 @@ def main():
 @main.command('predict')
 @click.option('--feature-name', default='Location',
                help='The feature to predict on')
+@click.option('--accuracy', default=0.75,
+               help='Desired accuracy for the model')
 @click.option('--test-size', default=0.2,
               help='The relative size of the test data')
 @click.option('--num-estimators', default=20,
@@ -36,7 +38,7 @@ def main():
 @click.argument('data-file', type=click.File('r'))
 @click.argument('metadata-file', type=click.File('r'))
 @click.argument('out-dir')
-def predict_top_features(feature_name, test_size, num_estimators, num_runs,
+def predict_top_features(feature_name, accuracy, test_size, num_estimators, num_runs,
                          num_data, normalize_method, normalize_threshold,
                          data_file, metadata_file, out_dir):
     """Train a random-forest model to predict the top data variables."""
@@ -48,11 +50,13 @@ def predict_top_features(feature_name, test_size, num_estimators, num_runs,
     feature = feature[new_index == True]
     normalized = normalize_data(raw_data, method=normalize_method, threshold=normalize_threshold)
     print ("Shape of dataset after normalization", normalized.shape)
-    top_features, model_parameters = prediction_methodology(normalized, feature,
-                                     microbes, num_runs=num_runs, num_data=num_data,
+    top_features_rf, model_parameters_rf = prediction_methodology(
+                                     normalized, feature,
+                                     microbes, accuracy=accuracy, num_runs=num_runs, num_data=num_data,
                                      test_size=test_size, num_estimators=num_estimators, seed=seed)
-    top_features.to_csv(os.path.join(out_dir, str('top_data_feature' + normalize_method + '.csv')))
-    model_parameters.to_csv(os.path.join(out_dir, str('model_parameters' + normalize_method + '.csv')))
+    top_features_rf.to_csv(os.path.join(out_dir, str('top_data_feature_rf_' + normalize_method + '.csv')))
+    model_parameters_rf.to_csv(os.path.join(out_dir, str('model_parameters_rf_' + normalize_method + '.csv')))
+
 
 @main.command('sample_corr')
 def sample_correlation():
