@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     precision_score,
     recall_score,
@@ -14,8 +15,8 @@ def split_data(data_tbl, features, test_size=0.2, seed=None):
     """Return a tuple of length four with train data, test data, train feature, test feature."""
     return train_test_split(data_tbl, features, test_size=test_size, random_state=seed)
 
-def train_model(data_tbl, features, n_estimators=20, seed=None):
-    """Return a trained model to predict features from data."""
+def train_random_forest(data_tbl, features, n_estimators=20, seed=None):
+    """Return a trained random forest model to predict features from data."""
     classifier = RandomForestClassifier(n_estimators=n_estimators, random_state=seed)
     classifier.fit(data_tbl, features)
     return classifier
@@ -32,7 +33,7 @@ def feature_importance(microbes, model):
     return feature_val
 
 
-def prediction_methodology(normalized, feature, microbes, num_runs,
+def prediction_methodology(normalized, feature, microbes, accuracy, num_runs,
                            num_data, test_size, num_estimators, seed):
     """Code to integrate prediction of features with model accuracy"""
     train_data, test_data, train_feature, test_feature = split_data(
@@ -49,11 +50,11 @@ def prediction_methodology(normalized, feature, microbes, num_runs,
     flag = 0
     while (i < num_runs):
         j+=1
-        model = train_model(
+        model = train_random_forest(
                 train_data, train_feature, n_estimators=num_estimators
     	        )
         predictions = predict_with_model(model, test_data).round()
-        if accuracy_score(test_feature, predictions.round())>=0.75 :
+        if accuracy_score(test_feature, predictions.round())>=accuracy :
             i += 1
             flag = 1
             model_results = model_results.append({'Accuracy':accuracy_score(test_feature, predictions.round()),
@@ -71,6 +72,7 @@ def prediction_methodology(normalized, feature, microbes, num_runs,
             feature_dataframe.loc[i, microbes_name] = values
     print("Total number of runs", j)
     s = feature_dataframe.sum()
-    top_features = feature_dataframe[s.sort_values(ascending=False).index[:num_data]]
-    model_parameters = model_results.join(feature_dataframe, sort=False)
-    return top_features, model_parameters
+    top_features_rf = feature_dataframe[s.sort_values(ascending=False).index[:num_data]]
+    model_parameters_rf = model_results.join(feature_dataframe, sort=False)
+
+    return top_features_rf, model_parameters_rf
