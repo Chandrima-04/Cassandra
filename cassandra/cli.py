@@ -57,11 +57,5 @@ def predict_top_features(feature_name, accuracy, test_size, num_estimators, num_
     top_features_rf.to_csv(os.path.join(out_dir, str('top_data_feature_rf_' + normalize_method + '.csv')))
     model_parameters_rf.to_csv(os.path.join(out_dir, str('model_parameters_rf_' + normalize_method + '.csv')))
 
-
-@main.command('sample_corr')
-def sample_correlation():
-    pass
-
-
 if __name__ == '__main__':
     main()
