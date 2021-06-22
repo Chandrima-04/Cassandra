@@ -20,7 +20,7 @@ def parse_feature(metadata_filename, sample_names, feature_name='city'):
     from factor values to feature names.
     """
     metadata = pd.read_csv(metadata_filename, index_col=0)
-    metadata = metadata.loc[metadata.index.intersection(sample_names)]
+    metadata = metadata.reindex(sample_names)
     feature = metadata[feature_name]
     factorized, name_map = pd.factorize(feature)
     return factorized, name_map
