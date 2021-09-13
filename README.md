@@ -14,7 +14,7 @@ Following preprocessing can be done:
 
 From source
 ```
-git clone git@github.com:Chandrima-04/Cassandra.git
+git clone https://github.com/Chandrima-04/Cassandra.git
 cd Cassandra
 python setup.py install
 ```
