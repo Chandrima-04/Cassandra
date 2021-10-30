@@ -1,16 +1,12 @@
-import pandas as pd
-import numpy as np
 import os.path
-import click
 from random import randint
 
-from .preprocessing import (
-    parse_raw_data,
-    parse_feature,
-    normalize_data,
-)
+import click
+import numpy as np
+import pandas as pd
 
 from .prediction import prediction_methodology
+from .preprocessing import normalize_data, parse_feature, parse_raw_data
 
 
 @click.group()
