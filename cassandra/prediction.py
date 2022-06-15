@@ -45,8 +45,8 @@ def prediction_methodology(normalized, feature, microbes, accuracy, num_runs,
         'Recall',
     ]
     i,j = 0,0
-    model_results = pd.DataFrame(columns = col_names)
-    feature_dataframe = pd.DataFrame(columns = microbes)
+    model_results = pd.DataFrame(columns = col_names, dtype=object)
+    feature_dataframe = pd.DataFrame(columns = microbes, dtype=object)
     flag = 0
     while (i < num_runs):
         j+=1
