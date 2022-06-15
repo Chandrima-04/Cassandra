@@ -59,3 +59,11 @@ The output folder consist two files:
 - model_parameters_rf_normalization_method.csv: Consist of all the weights associated to each input features (microbes in metagenomics data) along with accuracy, precision and recall. 
 - top_data_feature_rf_normalization_method.csv: Consist the top n features (microbes in metagenomics data) along with the weight associated with those features. (Default: 50, can be modified)
 
+## License
+
+All material is provided under the MIT License.
+
+## Credits
+
+This package is written and maintained by [Chandrima Bhattacharya](mailto:chb4004@med.cornell.edu).
+
