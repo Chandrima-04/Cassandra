@@ -51,3 +51,12 @@ def normalize_data_binary(data_tbl, threshold=0.0001):
     data_tbl[data_tbl < threshold] = 0
     data_tbl[data_tbl >= threshold] = 1
     return data_tbl
+    
+def normalize_clr(data_tbl):
+	"""Return the compositional data table with clr replacement."""
+	data = normalize_multiplicative_replacement(data_tbl)
+	return clr(data)
+	
+def normalize_multiplicative_replacement(data_tbl):
+	"""Return the compositional data table with multiplicative replacement."""
+	return multiplicative_replacement(data_tbl)
