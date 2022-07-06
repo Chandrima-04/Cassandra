@@ -1,8 +1,5 @@
 # Cassandra
 
-
- <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
-
 Cassandra is a package for performing factor analysis for sparse datasets. Designed for metagenomics data, it can also be used in other types of datasets including single-cell, or any other sparse dataset. 
 
 Machine Learning algorithms usually acts like a black-box, thus what is happening in prediction using an ML algorithm is difficult to know. Some known issues of using ML in metagenomics datasets are due to the structur of metagenomic dataset which includes:
