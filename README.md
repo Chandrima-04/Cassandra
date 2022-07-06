@@ -24,6 +24,9 @@ Following are the preprocessing methods Cassandra allows:
 
 NOTE: Multiple methods of transformation/preprocessing will distort the data.
 
+![Cassandra](https://user-images.githubusercontent.com/9072403/177629034-8f2df5e0-3ffb-4554-ab49-5577cb9392cb.jpeg)
+
+
 ## Installation
 
 From source
@@ -39,6 +42,13 @@ python setup.py install
 cassandra predict --feature-name <Metadata-factor> ...  <input> <meta-data> <output>
 ```
 
+
+### Example 
+
+```
+cassandra predict --feature-name city --accuracy 0.80 toy_data/toy_input.csv toy_data/toy_metadata.csv toy_data/toy_output
+```
+
 Parameters include:
 
 ```
@@ -50,13 +60,25 @@ Parameters include:
   --normalize-method TEXT     Normalization method
   --feature-name TEXT         The feature to predict
   --normalize-threshold TEXT  Normalization threshold for binary normalization
+  input CSV_FILE              Input file consisting of species (OTU/WGS/Nanopore data) for multiple samples
+  meta_data CSV_FILE          additional information about sample, feature name should consist of a column name from this file
+  output FOLDER               name of the folder in which the output file will be generated
 ```
 
 
 ## Output
 
 The output folder consist two files:
-- model_parameters_rf_normalization_method.csv: Consist of all the weights associated to each input features (microbes in metagenomics data) along with accuracy, precision and recall. 
+- model_parameters_rf_normalization_method.csv
+
+
+```
+Accuracy	        The accuracy for the given run 
+Precision	        Precision for the given run
+Recall            Recall value for the given run
+Microbe_name      The weight associated with the microbe for the given run
+```
+
 - top_data_feature_rf_normalization_method.csv: Consist the top n features (microbes in metagenomics data) along with the weight associated with those features. (Default: 50, can be modified)
 
 ## License
