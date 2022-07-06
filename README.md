@@ -36,10 +36,27 @@ cd Cassandra
 python setup.py install
 ```
 
+## Requirements
+
+- Python >= 3.6
+- Cython
+- scikit-learn
+- scikit-bio
+- numpy
+- pandas
+- scipy
+- click
+
 ## Usage
 
 ```
 cassandra predict --feature-name <Metadata-factor> ...  <input> <meta-data> <output>
+```
+
+For more options
+
+```
+cassandra --help
 ```
 
 
@@ -73,13 +90,22 @@ The output folder consist two files:
 
 
 ```
-Accuracy	        The accuracy for the given run 
-Precision	        Precision for the given run
-Recall            Recall value for the given run
-Microbe_name      The weight associated with the microbe for the given run
+Accuracy	          The accuracy for the given run 
+Precision	          Precision for the given run
+Recall              Recall value for the given run
+Microbe_name        The weight associated with the microbe for the given run
 ```
 
 - top_data_feature_rf_normalization_method.csv: Consist the top n features (microbes in metagenomics data) along with the weight associated with those features. (Default: 50, can be modified)
+
+
+## Datasets
+
+The datasets used in this Paper are from 
+
+- MetaSUB: Danko, D., Bezdan, D., Afshin, E.E., Ahsanuddin, S., Bhattacharya, C., Butler, D.J., Chng, K.R., Donnellan, D., Hecht, J., Jackson, K. and Kuchin, K., 2021. A global metagenomic map of urban microbiomes and antimicrobial resistance. Cell, 184(13), pp.3376-3393.
+
+- TARA Ocean: Salazar, G., Paoli, L., Alberti, A., Huerta-Cepas, J., Ruscheweyh, H.J., Cuenca, M., Field, C.M., Coelho, L.P., Cruaud, C., Engelen, S. and Gregory, A.C., 2019. Gene expression changes and community turnover differentially shape the global ocean metatranscriptome. Cell, 179(5), pp.1068-1083.
 
 ## License
 
