@@ -90,8 +90,8 @@ The output folder consist two files:
 
 
 ```
-Accuracy	          The accuracy for the given run 
-Precision	          Precision for the given run
+Accuracy            The accuracy for the given run 
+Precision           Precision for the given run
 Recall              Recall value for the given run
 Microbe_name        The weight associated with the microbe for the given run
 ```
