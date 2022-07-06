@@ -1,7 +1,7 @@
 import setuptools
 
 requirements = [
-    'scikit-learn',
+    'scikit-learn==0.24.1',
     'numpy',
     'pandas',
     'scipy',
