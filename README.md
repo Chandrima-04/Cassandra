@@ -53,19 +53,6 @@ python setup.py install
 cassandra predict --feature-name <Metadata-factor> ...  <input> <meta-data> <output>
 ```
 
-For more options
-
-```
-cassandra --help
-```
-
-
-### Example 
-
-```
-cassandra predict --feature-name city --accuracy 0.80 toy_data/toy_input.csv toy_data/toy_metadata.csv toy_data/toy_output
-```
-
 Parameters include:
 
 ```
@@ -80,6 +67,19 @@ Parameters include:
   input CSV_FILE              Input file consisting of species (OTU/WGS/Nanopore data) for multiple samples
   meta_data CSV_FILE          additional information about sample, feature name should consist of a column name from this file
   output FOLDER               name of the folder in which the output file will be generated
+```
+
+For more options
+
+```
+cassandra --help
+```
+
+
+### Example 
+
+```
+cassandra predict --feature-name city --accuracy 0.80 toy_data/toy_input.csv toy_data/toy_metadata.csv toy_data/toy_output
 ```
 
 
