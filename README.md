@@ -2,8 +2,8 @@
 
 Cassandra is a package for performing factor analysis for sparse datasets. Designed for metagenomics data, it can also be used in other types of datasets including single-cell, or any other sparse dataset. 
 
-Machine Learning algorithms usually acts like a black-box, thus what is happening in prediction using an ML algorithm is difficult to know. Some known issues of using ML in metagenomics datasets are due to the structur of metagenomic dataset which includes:
-- Quantatitive: Metagenomic results are usually quantative. Based on the tool they can be absolute or relative values in a given sample.
+Machine Learning algorithms usually act like a black-box, thus what is happening in prediction using an ML algorithm is difficult to know. Some known issues of using ML in metagenomics datasets are due to their structure which includes:
+- Quantatitive: Metagenomic results are usually quantative. Based on the tool they can be absolute or relative values in a given sample
 - Categorical: Variables represent types of data which may be divided into groups
 - Nominal: Data that is classified without a natural order or rank
 - Unbalanced: Most of the dataset are usually unbalanced in nature
