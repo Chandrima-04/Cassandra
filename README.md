@@ -54,17 +54,17 @@ python setup.py install
 cassandra predict --feature-name <Metadata-factor> ...  <input> <meta-data> <output>
 ```
 
-Parameters include:
+The parameters and their default value is mentioned below. All parameters can be set. When the parameters are chosen, the default is updated as per the user input.
 
 ```
-  --accuracy FLOAT            Desired accuracy for the model
-  --test-size FLOAT           The relative size of the test data
-  --num-estimators INTEGER    Number of trees in our Ensemble Methods
-  --num-runs INTEGER          Number of random forest runs
-  --num-data INTEGER          Number of top data variables to be predicted
-  --normalize-method TEXT     Normalization method
-  --feature-name TEXT         The feature to predict
-  --normalize-threshold TEXT  Normalization threshold for binary normalization
+  --accuracy FLOAT            Desired accuracy for the model to achieve. Default=0.75
+  --test-size FLOAT           The relative size of the test data. 0.2
+  --num-estimators INTEGER    Number of trees in our Ensemble Methods. Default=20
+  --num-runs INTEGER          Number of random forest runs with user selected accuracy for finding bioindicator species. Default=1000
+  --num-data INTEGER          Number of top data microbes based on the run to be output. Default=50
+  --normalize-method TEXT     Normalization method selected for preprocessing. Default=standard_scalar
+  --feature-name TEXT         The feature to be used, mostly geolocation. Default=city
+  --normalize-threshold TEXT  Normalization threshold for binary normalization. Default=0.0001
   input CSV_FILE              Input file consisting of species (OTU/WGS/Nanopore data) for multiple samples
   meta_data CSV_FILE          additional information about sample, feature name should consist of a column name from this file
   output FOLDER               name of the folder in which the output file will be generated
