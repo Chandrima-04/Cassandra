@@ -14,7 +14,8 @@ Machine Learning algorithms usually act like a black-box, thus what is happening
 
 Cassandra (Greek Mythology: Trojan Priestess of Apollo known for her prophecies) is a tool to envisage potential microbial factors influencing the ML tool based on features. Many times we find the top abundant microbes are not the indicator species. Hence, using Random Forest, we try to determine the indicator species responsible as a differential factors across environments.
 
-Following are the preprocessing methods Cassandra allows:
+## Preprocessing
+Following are the preprocessing methods Cassandra allows to accomodate the needs of metagenomics data:
 - binary: 0,1 based on a threshold value (default=0.0001)
 - clr: transformation function for compositional data based on Aitchison geometry to the real space
 - multiplicative_replacement: transformation function for compositional data  uses the multiplicative replacement strategy for replacing zeros such that compositions still add up to 1
