@@ -54,7 +54,7 @@ python setup.py install
 cassandra predict --feature-name <Metadata-factor> ...  <input> <meta-data> <output>
 ```
 
-The parameters and their default value is mentioned below. All parameters can be set. When the parameters are chosen, the default is updated as per the user input.
+The parameters and their default value is mentioned below. All parameters can be set. When the parameters are chosen, the default is updated as per the user input. The parameters should be updated based on the scientific question and relevance.
 
 ```
   --accuracy FLOAT            Desired accuracy for the model to achieve. Default=0.75
