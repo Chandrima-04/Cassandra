@@ -3,7 +3,7 @@
 Cassandra is a package for performing factor analysis for sparse datasets. Designed for metagenomics data, it can also be used in other types of datasets including single-cell, or any other sparse dataset. 
 
 Machine Learning algorithms usually act like a black-box, thus what is happening in prediction using an ML algorithm is difficult to know. Some known issues of using ML in metagenomics datasets are due to their structure which includes:
-- Quantatitive: Metagenomic results are usually quantative. Based on the tool they can be absolute or relative values in a given sample
+- Quantitative: Metagenomic results are usually quantitative. Based on the tool they can be absolute or relative values in a given sample
 - Categorical: Variables represent types of data which may be divided into groups
 - Nominal: Data that is classified without a natural order or rank
 - Unbalanced: Most of the dataset are usually unbalanced in nature
@@ -98,6 +98,11 @@ Microbe_name        The weight associated with the microbe for the given run
 ```
 
 - top_data_feature_rf_normalization_method.csv: Consist the top n features (microbes in metagenomics data) along with the weight associated with those features. (Default: 50, can be modified)
+
+
+## Citation
+
+Bhattacharya, C., Tierney, B.T., Ryon, K.A., Bhattacharyya, M., Hastings, J.J., Basu, S., Bhattacharya, B., Bagchi, D., Mukherjee, S., Wang, L. and Henaff, E.M., 2022. Supervised Machine Learning Enables Geospatial Microbial Provenance. Genes, 13(10), p.1914.
 
 
 ## Datasets
